@@ -1,5 +1,5 @@
+using Spectre.Console;
 using System.Globalization;
-
 public class ManualCodingSession
 {
     internal static void ManualSession()
@@ -10,19 +10,13 @@ public class ManualCodingSession
         DateTime end;
 
         string startTime = Console.ReadLine()!;
-        bool valid = false; 
+      
 
         while (!DateTime.TryParseExact(startTime, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out start))
         {
-            Console.WriteLine("Invalid format. Please enter the start Date and Time in the format (MM/DD/YYYY HH:MM)");
+            AnsiConsole.MarkupLine("[maroon]Invalid format. Please enter the end Date and Time in the format (MM/DD/YYYY HH:MM)[/]");
             startTime = Console.ReadLine()!;
-
-            while(!valid)
-            {
-               valid = Validation.DateTimeValidation(start);
-                Console.WriteLine("Make sure the format is correct (MM/DD/YYYY HH:MM). Enter the start time again");
-                startTime = Console.ReadLine()!;
-            }
+            
         }
         Console.WriteLine();
         Console.WriteLine("Enter the end Date and Time (24 Hour). (MM/DD/YYYY HH:MM)");
@@ -30,15 +24,10 @@ public class ManualCodingSession
 
         while (!DateTime.TryParseExact(endTime, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out end))
         {
-            Console.WriteLine("Invalid format. Please enter the end Date and Time in the format (MM/DD/YYYY HH:MM)");
+            AnsiConsole.MarkupLine("[maroon]Invalid format. Please enter the end Date and Time in the format (MM/DD/YYYY HH:MM)[/]");
             endTime = Console.ReadLine()!;
-            valid = false;
-            while(!valid)
-            {
-               valid = Validation.DateTimeValidation(end);
-                Console.WriteLine("Make sure the format is correct (MM/DD/YYYY HH:MM). Enter the end time again");
-                endTime = Console.ReadLine()!;
-            }
+            
+            
         }
         
          TimeSpan duration = CalculateDuration.CalculateTimeDuration(start, end);

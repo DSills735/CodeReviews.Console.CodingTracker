@@ -27,9 +27,9 @@ internal class SqlHelper
 
     public static string ViewAllCommand()
     {
-        {
+        
             return "SELECT * FROM Coding_Tracker";
-        }
+        
     }
     public static string DeleteSingleRecord(string id)
     {
